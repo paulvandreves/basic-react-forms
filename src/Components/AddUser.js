@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import UserList from "./UserList";
 
 const AddUser = () => {
     const [values, setValues] = useState({
@@ -32,15 +33,16 @@ const AddUser = () => {
             setValid(true); 
             setUsers(values); // do I need to explicitly type out the entire object ? 
         }
-        console.log(users);
+        
         setSubmitted(true); 
+        setUsers(values); 
     }
 
   return (
     <div className="form-container">
     <form className="register-form" onSubmit={handleSubmit} >
       
-      {submitted && valid && <div class="success-message">Success! Thank you for registering</div>}
+      {submitted && valid && <div className="success-message">Success! Thank you for registering</div>}
       <input
         onChange={handleFirstNameInputChange}
         value={values.firstName}
@@ -89,8 +91,9 @@ const AddUser = () => {
     </form>
 
     <div>
-        {/* TODO: Display list of users here */}
-        {}
+        {/* <UserList props={users} /> */}
+
+        {console.log(users)}
     </div>
 
   </div>
